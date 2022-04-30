@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "react-nx-yup": "apps/react-nx-yup",
+    "react-nx-yup-e2e": "apps/react-nx-yup-e2e"
+  }
+}

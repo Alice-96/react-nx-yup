@@ -1,0 +1,83 @@
+{
+  "root": "apps/react-nx-yup",
+  "sourceRoot": "apps/react-nx-yup/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/react-nx-yup",
+        "index": "apps/react-nx-yup/src/index.html",
+        "baseHref": "/",
+        "main": "apps/react-nx-yup/src/main.tsx",
+        "polyfills": "apps/react-nx-yup/src/polyfills.ts",
+        "tsConfig": "apps/react-nx-yup/tsconfig.app.json",
+        "assets": [
+          "apps/react-nx-yup/src/favicon.ico",
+          "apps/react-nx-yup/src/assets"
+        ],
+        "styles": ["apps/react-nx-yup/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/react-nx-yup/src/environments/environment.ts",
+              "with": "apps/react-nx-yup/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-nx-yup:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-nx-yup:build:development"
+        },
+        "production": {
+          "buildTarget": "react-nx-yup:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-nx-yup/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/react-nx-yup"],
+      "options": {
+        "jestConfig": "apps/react-nx-yup/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
