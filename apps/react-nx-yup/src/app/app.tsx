@@ -1,13 +1,20 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+// import styles from './app.module.scss';
 
-export function App() {
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import TopPage from './pages/TopPage';
+import YupTrialPage from './pages/YupTrialPage';
+import YupTrialNestedPage from './pages/YupTrialNestedPage';
+
+function App() {
   return (
-    <>
-      <NxWelcome title="react-nx-yup" />
-      <div />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TopPage />} />
+        <Route path="/yup" element={<YupTrialPage />} />
+        <Route path="/yupNested" element={<YupTrialNestedPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
